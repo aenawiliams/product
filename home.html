@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div ng-app="" ng-controller="customersController"> 
+
+<ul>
+  <li ng-repeat="x in names">
+    {{ x.cName + ', ' + x.Country +', ' + x.carName}}
+    <img src="{{x.picture}}" />
+  </li>
+</ul>
+
+</div>
+
+<script>
+function customersController($scope,$http) {
+  $http.get("json.php")
+  .success(function(response) {$scope.names = response;});
+}
+</script>
+
+<script src="angular.min.js"></script>
+
+</body>
+</html>
